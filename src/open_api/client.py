@@ -1,6 +1,6 @@
-from config import OPENAI_API_KEY
+from src.settings.config import OPENAI_API_KEY
 from openai import AsyncOpenAI, OpenAIError
-import asyncio
+
 
 class OpenAiClient:
     def __init__(self):
@@ -17,15 +17,6 @@ class OpenAiClient:
             )
             return response.choices[0].message.content
         except OpenAIError as e:
-            # logging
-            print(e)
-
-
-async def main():
-    client = OpenAiClient()
-    reply = await client.ask("Hi, whats up? How the weather changes in Earth?")
-    print(reply)
-
-
-if __name__ == "__main__":
-    asyncio.run(main())
+            import logging
+            logging.error(f"OpenAI error: {e}")
+            return "Вибач, зараз я не можу відповісти."
