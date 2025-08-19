@@ -2,26 +2,26 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Путь к .env
+# Шлях до .env
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 ENV_PATH = BASE_DIR / ".env"
 
-# Загружаем .env
+# Загрузка .env
 load_dotenv(ENV_PATH)
 
-# Папка с ресурсами
+# Папка з ресурсами
 PATH_TO_RESOURCES = BASE_DIR / "src" / "resources"
 
-# Ключи из окружения
+# Ключі з оточення
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 TG_BOT_API_KEY = os.getenv("TG_BOT_API_KEY")
 
-# Проверка, чтобы не запускать проект без ключей
+# Перевірка, щоб не запускати проект без ключів
 if OPENAI_API_KEY is None:
-    raise RuntimeError("OPENAI_API_KEY не найден в окружении. Проверь файл .env")
+    raise RuntimeError("OPENAI_API_KEY не знайдено в оточенні. Перевір файл .env")
 
 if TG_BOT_API_KEY is None:
-    raise RuntimeError("TG_BOT_API_KEY не найден в окружении. Проверь файл .env")
+    raise RuntimeError("TG_BOT_API_KEY не знайдено в оточенні. Перевір файл .env")
 import logging
 
 logging.basicConfig(
