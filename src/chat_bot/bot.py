@@ -53,9 +53,9 @@ def main():
     app.add_handler(CommandHandler("random", random_fact))
 
     # --- Conversations ---
-    app.add_handler(quiz_conv_handler, group=0)  # приоритет квиза
+    app.add_handler(quiz_conv_handler, group=0)
     app.add_handler(talk_conv_handler)
-    app.add_handler(gpt_conv_handler, group=1)  # ниже приоритет GPT-чата
+    app.add_handler(gpt_conv_handler, group=1)
     app.add_handler(resume_conv_handler)
 
     # --- Callback-кнопки для RandomFact ---
